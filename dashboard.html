@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Yoruba Aloud</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <!-- Linewesome -->
+    <link rel="stylesheet" href="lineawesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <input type="checkbox" id="nav-toggle">
+    <div class="sidebar bg-dark">
+       <div class="sidebar-brand">
+       <!-- <img class="uk-margin-small-right in-offset-top-10" src="img/nan.png" alt="wave" width="95" height="50" data-uk-img> -->
+       Yoruba Aloud
+       </div>
+
+       <div class="sidebar-menu">
+       <ul>
+            <li>
+             <a href="dashboard.php" class="active" style="text-decoration: none; color: #222;"><span class="lar la-chart-bar" style="color: #b6cc00;"></span><span>Dashboard</span></a>
+            </li>
+            <li>
+               <a href="categories.html" style="text-decoration: none;"><span class="las la-layer-group" style="color: #b6cc00;"></span><span>Categories</span></a>
+              </li>
+            <li>
+             <a href="upload.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Upload Items</span></a>
+            </li>
+            <li>
+             <a href="quiz.html" style="text-decoration: none;"><span class="las la-upload" style="color: #b6cc00;"></span><span>Upload Quizzes</span></a>
+            </li>
+            <li>
+             <a href="Details.html" style="text-decoration: none;"><span class="las la-user-circle" style="color: #b6cc00;"></span><span>Details</span></a>
+            </li>
+            <li>
+             <a href="logout.php" style="text-decoration: none;"><span class="las la-lock" style="color: #b6cc00;"></span><span>Logout</span></a>
+            </li>
+       </ul>
+    </div>
+    </div>
+
+    <div class="main-content">
+       <header>
+           <h2>
+               <label for="nav-toggle">
+                   <span class="las la-bars"></span>
+               </label>
+                Dashboard
+           </h2>
+        </header>
+
+       <main>
+            <div class="dash-cards">
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="las la-clipboard-list" style="color: #b6cc00; font-size: 32px;"></span>
+                        <div>
+                            <h6>Total Categories</h6>
+                            <h5 id="revenue"> 5</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="las la-layer-group" style="color: #b6cc00; font-size: 32px;"></span>
+                        <div>
+                            <h6>Total Sub-Categories</h6>
+                            <h5 id="commission">3</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="las la-file-upload" style="color: #b6cc00; font-size: 32px;"></span>
+                        <div>
+                            <h6>Total Upload</h6>
+                            <h5 id="pass">2</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="outer-wrapper mt-5">
+                <div class="table-wrapper">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="ticket">Categories</th>
+                                <th class="customer">Sub-Categories</th>
+                                <th class="location">Created Date</th>
+                                <th class="destination">Modified Date</th>
+                                <th class="phone">View More</th>
+                                <th class="cost">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Alphabet</td>
+                                <td>Vowel</td>
+                                <td>9/03/2020</td>
+                                <td>12/05/2020</td>
+                                <td>View</td>
+                                <td><i class="lar la-trash-alt" style="font-size: x-large;"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Alphabet</td>
+                                <td>Consonant</td>
+                                <td>9/03/2020</td>
+                                <td>12/05/2020</td>
+                                <td>View</td>
+                                <td><i class="lar la-trash-alt" style="font-size: x-large;"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Number</td>
+                                <td>Even</td>
+                                <td>9/03/2020</td>
+                                <td>12/05/2020</td>
+                                <td>View</td>
+                                <td><i class="lar la-trash-alt" style="font-size: x-large;"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Number</td>
+                                <td>Odd</td>
+                                <td>9/03/2020</td>
+                                <td>12/05/2020</td>
+                                <td>View</td>
+                                <td><i class="lar la-trash-alt" style="font-size: x-large;"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Image</td>
+                                <td>Animal</td>
+                                <td>9/03/2020</td>
+                                <td>12/05/2020</td>
+                                <td>View</td>
+                                <td><i class="lar la-trash-alt" style="font-size: x-large;"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+       </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <!-- Custom Javascript -->
+    <script src="index.js"></script>
+</body>
+</html>
