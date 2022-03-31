@@ -24,7 +24,7 @@ body {
 }
 
 .specta2 {
-    background: url('images/imgbg.png') no-repeat center center /cover;
+    background: url('images/spec.png') no-repeat center center /cover;
     width: 100%;
 }
 
@@ -413,4 +413,15 @@ table td {
     height: 400px;
     overflow: hidden;
     overflow-y: scroll;
+}
+
+.search-card {
+    width: 100%;
+    border-radius: 14.243902206420898px;
+    padding: 20px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.search-card img {
+    width: 100%
 }

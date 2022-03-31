@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Yoruba Aloud</title>
+    <title>Details | Yoruba Aloud</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -27,7 +27,7 @@
              <a href="dashboard.html" style="text-decoration: none;"><span class="lar la-chart-bar" style="color: #b6cc00;"></span><span>Dashboard</span></a>
             </li>
             <li>
-               <a href="categories.html" class="active" style="text-decoration: none;"><span class="las la-layer-group" style="color: #b6cc00;"></span><span>Categories</span></a>
+               <a href="categories.html" style="text-decoration: none;"><span class="las la-layer-group" style="color: #b6cc00;"></span><span>Categories</span></a>
               </li>
             <li>
              <a href="upload.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Upload Items</span></a>
@@ -36,7 +36,7 @@
              <a href="quiz.html" style="text-decoration: none;"><span class="las la-upload" style="color: #b6cc00;"></span><span>Upload Quizzes</span></a>
             </li>
             <li>
-             <a href="Details.html" style="text-decoration: none;"><span class="las la-user-circle" style="color: #b6cc00;"></span><span>Details</span></a>
+             <a href="Details.html" class="active" style="text-decoration: none;"><span class="las la-user-circle" style="color: #b6cc00;"></span><span>Details</span></a>
             </li>
             <li>
              <a href="logout.php" style="text-decoration: none;"><span class="las la-lock" style="color: #b6cc00;"></span><span>Logout</span></a>
@@ -56,53 +56,24 @@
         </header>
 
        <main>
-        <div class="dash-cards">
-            <div class="card-single">
-                <div class="card-body">
-                    <span class="las la-clipboard-list" style="color: #b6cc00; font-size: 32px;"></span>
-                    <div>
-                        <h6>Total Categories</h6>
-                        <h5 id="revenue"> 5</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="card-single">
-                <div class="card-body">
-                    <span class="las la-layer-group" style="color: #b6cc00; font-size: 32px;"></span>
-                    <div>
-                        <h6>Total Sub-Categories</h6>
-                        <h5 id="commission">3</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="card-single">
-                <div class="card-body">
-                    <span class="las la-file-upload" style="color: #b6cc00; font-size: 32px;"></span>
-                    <div>
-                        <h6>Total Upload</h6>
-                        <h5 id="pass">2</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
            <div class="row">
                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <h2 class="text-center mt-5">Add Categories</h2>
+                <h2 class="text-center mt-5">Sub Categories</h2>
                 <form id="catForm">
                     
-                    <label for="Email" class="font-mulish font-size-14 font-weight-600">Categories</label>
-                    <input type="text" name="cat" id="cat" class="input mb-3" placeholder="Enter Categories Here">
+                    <label for="Email" class="font-mulish font-size-14 font-weight-600">Add subcategories</label>
+                    <input type="text" name="cat" id="subcat" class="input mb-3" placeholder="Enter Categories Here">
 
                     <label for="Email" class="font-mulish font-size-14 font-weight-600">Category Images</label>
-                    <input type="file" name="image" id="imcat" class="input mb-3" placeholder="Enter Categories Here">
+                    <input type="file" name="image" id="imcat2" class="input mb-3" placeholder="Enter Categories Here">
     
-                    <button class="button button-blue font-weight-700" type="button" onclick="createCategory(event)">Create Category</button>
+                    <button class="button button-blue font-weight-700" type="button">Create Category</button>
                 </form>
                </div>
                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                    <div class="scroll-bg">
                        <div class="scroll-div">
-                           <div class="scroll-object">
+                           <div class="scroll-object2">
                                
                            </div>
                        </div>

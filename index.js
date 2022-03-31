@@ -146,7 +146,7 @@ function createCategory(event) {
                     text: 'Category created successfully',
                     confirmButtonColor: '#2D85DE'
                 })
-
+                // location.reload();
                 getForm.reset();
             }
             else {
@@ -163,3 +163,39 @@ function createCategory(event) {
 }
 
 // Function for category list
+function getCatList() {
+    const getScrollItem = document.querySelector(".scroll-object");
+    const getToken = localStorage.getItem('loginData');
+    const token = JSON.parse(getToken);
+    const myToken = token.token;
+
+    const listHeaders = new Headers();
+    listHeaders.append("Authorization", `Bearer ${myToken}`);
+
+    const listOptions = {
+        method: 'GET',
+        headers: listHeaders
+    }
+
+    let data = [];
+
+    const url = "https://codesandbox.com.ng/yorubalearning/api/admin/category_list";
+
+    fetch(url, listOptions)
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+        result?.map((item) => {
+            data += `
+            <div class="search-card">
+              <a href="details.html?id=${item.id}"><img src=${item.image} alt="image" /></a>
+              <p>${item.name}</p>
+            </div>
+            `
+            getScrollItem.innerHTML = data;
+        })
+    })
+    .catch(error => console.log('error', error));
+}
+
+getCatList()
