@@ -109,6 +109,27 @@
                    </div>
                </div>
            </div>
+
+           <div id="my-modal" class="mymodal">
+               <div class="modal-content">
+                   <div class="modal-header">
+                    <h2>Update Category</h2>
+                       <span class="close" onclick="closeModal()">&times;</span>
+                   </div>
+                   <div class="modal-body">
+                    <form id="updForm">
+                    
+                        <label for="updateName" class="font-mulish font-size-14 font-weight-600">Category Name</label>
+                        <input type="text" name="updateName" id="updateName" class="input mb-3" placeholder="Enter Categories Name Here">
+    
+                        <label for="updateImage" class="font-mulish font-size-14 font-weight-600">Category Images</label>
+                        <input type="file" name="updateImage" id="updateImage" class="input mb-3" placeholder="Enter Categories Image Here">
+        
+                        <button class="button button-blue font-weight-700" type="button" onclick="updateCategory(event)">Update Category</button>
+                    </form>
+                   </div>
+               </div>
+           </div>
        </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

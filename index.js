@@ -190,6 +190,10 @@ function getCatList() {
             <div class="search-card">
               <a href="details.html?id=${item.id}"><img src=${item.image} alt="image" /></a>
               <p>${item.name}</p>
+              <div class="text-right">
+                <button class="update-button" onclick="openModal(${item.id})">Update</buton>
+                <button class="delete-button" onclick="deleteCategory(${item.id})">Delete</buton>
+              </div>
             </div>
             `
             getScrollItem.innerHTML = data;
@@ -199,3 +203,111 @@ function getCatList() {
 }
 
 getCatList()
+
+// Function for deleting a category
+function deleteCategory(id) {
+    const getDelToken = localStorage.getItem('loginData');
+    const delToken = JSON.parse(getDelToken);
+    const deleteToken = delToken.token;
+
+
+    const deleteHeaders = new Headers();
+    deleteHeaders.append("Authorization", `Bearer ${deleteToken}`);
+
+    const deleteRequest = {
+        method: 'GET',
+        headers: deleteHeaders
+    };
+
+    const url = `https://codesandbox.com.ng/yorubalearning/api/admin/delete_category/` + `${id}`;
+
+    fetch(url, deleteRequest)
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+
+        if(result.status === "success") {
+            location.reload();
+        }else {
+            Swal.fire({
+                icon: 'info',
+                text: 'Delete Unsuccessful!',
+                confirmButtonColor: '#2D85DE'
+            })
+        }
+    })
+    .catch(error => console.log('error', error));
+}
+
+let getUnique;
+// function for opening modal
+function openModal(itemid) {
+    localStorage.setItem("uniqueId", itemid)
+    const getMyUnique = localStorage.getItem('uniqueId');
+    const theUnique = JSON.parse(getMyUnique);
+    getUnique = theUnique.id;
+    console.log(getMyUnique);
+
+
+    const getModal = document.getElementById("my-modal");
+    getModal.style.display = "block"
+}
+
+// function to close modal
+function closeModal() {
+    const getModal = document.getElementById("my-modal");
+    getModal.style.display = "none";
+}
+
+// function close close modal anywhere
+window.onclick = function outsideClick(e) {
+    const getModal = document.getElementById("my-modal");
+    if (e.target == getModal) {
+        getModal.style.display = "none";
+    }
+}
+
+// function for updating category
+function updateCategory(event) {
+    event.preventDefault();
+    
+    const categoryName = document.getElementById("updateName").value;
+    const categoryImage = document.getElementById("updateImage").files[0];
+
+    if (categoryName === "" || categoryImage === "") {
+        Swal.fire({
+            icon: 'info',
+            text: 'All fields are required',
+            confirmButtonColor: '#2D85DE'
+        })
+    }
+    else {
+        const upToken = localStorage.getItem('loginData');
+        const getUpToken = JSON.parse(upToken);
+        const updateToken = getUpToken.token;
+
+        const updateHeader = new Headers();
+        updateHeader.append("Authorization", `Bearer ${updateToken}`);
+
+        const updateData = new FormData();
+        updateData.append("name", categoryName);
+        updateData.append("image", categoryImage);
+        updateData.append("category_id", getUnique);
+
+        const updateRequest = {
+            method: 'POST',
+            headers: updateHeader,
+            body: updateData
+        };
+
+        const url = "https://codesandbox.com.ng/yorubalearning/api/admin/update_category";
+
+        fetch(url, updateRequest)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+
+
+}
+
