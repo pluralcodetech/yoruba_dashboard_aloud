@@ -146,8 +146,7 @@ function createCategory(event) {
                     text: 'Category created successfully',
                     confirmButtonColor: '#2D85DE'
                 })
-                // location.reload();
-                getForm.reset();
+                location.reload();
             }
             else {
                 Swal.fire({
@@ -245,8 +244,8 @@ function openModal(itemid) {
     localStorage.setItem("uniqueId", itemid)
     const getMyUnique = localStorage.getItem('uniqueId');
     const theUnique = JSON.parse(getMyUnique);
-    getUnique = theUnique.id;
-    console.log(getMyUnique);
+    getUnique = theUnique;
+    console.log(getUnique);
 
 
     const getModal = document.getElementById("my-modal");
@@ -270,7 +269,7 @@ window.onclick = function outsideClick(e) {
 // function for updating category
 function updateCategory(event) {
     event.preventDefault();
-    
+
     const categoryName = document.getElementById("updateName").value;
     const categoryImage = document.getElementById("updateImage").files[0];
 
@@ -285,6 +284,7 @@ function updateCategory(event) {
         const upToken = localStorage.getItem('loginData');
         const getUpToken = JSON.parse(upToken);
         const updateToken = getUpToken.token;
+        console.log(updateToken);
 
         const updateHeader = new Headers();
         updateHeader.append("Authorization", `Bearer ${updateToken}`);
@@ -300,14 +300,73 @@ function updateCategory(event) {
             body: updateData
         };
 
+        console.log(getUnique);
+
         const url = "https://codesandbox.com.ng/yorubalearning/api/admin/update_category";
 
         fetch(url, updateRequest)
         .then(response => response.json())
-        .then(result => console.log(result))
+        .then(result => {
+            console.log(result)
+            if (result.status === "success") {
+                location.reload();
+            }
+            else {
+                Swal.fire({
+                    icon: 'info',
+                    text: 'Update Unsuccessful!',
+                    confirmButtonColor: '#2D85DE'
+                })
+            }
+        })
         .catch(error => console.log('error', error));
     }
 
 
 }
+
+// Function for details page
+function getDetails() {
+    const params =new URLSearchParams(window.location.search);
+    let getId = params.get('id');
+
+    const del = localStorage.getItem('loginData');
+    const getDel = JSON.parse(del);
+    const getTheDel = getDel.token;
+
+    const delHeaders = new Headers();
+    delHeaders.append("Authorization", `Bearer ${getTheDel}`);
+
+    const delRequest = {
+        method: 'GET',
+        headers: delHeaders
+    };
+
+    let items = [];
+    const url = `https://codesandbox.com.ng/yorubalearning/api/admin/category_details/` + `${getId}`;
+
+    fetch(url, delRequest)
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+        result?.map((item) => {
+            items +=`
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-8">
+                  <div class="box-img">
+                    ${item.image}
+                  </div>
+                </div>
+               <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4">
+                   <h2>${item.name}</h2>
+               </div>
+            `
+
+            let info = document.querySelector(".row");
+            info.innerHTML = items;
+        })
+    })
+    .catch(error => console.log('error', error));
+}
+
+getDetails();
 
