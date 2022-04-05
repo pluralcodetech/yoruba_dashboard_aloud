@@ -284,7 +284,6 @@ function updateCategory(event) {
         const upToken = localStorage.getItem('loginData');
         const getUpToken = JSON.parse(upToken);
         const updateToken = getUpToken.token;
-        console.log(updateToken);
 
         const updateHeader = new Headers();
         updateHeader.append("Authorization", `Bearer ${updateToken}`);
@@ -327,7 +326,7 @@ function updateCategory(event) {
 
 // Function for details page
 function getDetails() {
-    const params =new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
     let getId = params.get('id');
 
     const del = localStorage.getItem('loginData');
@@ -351,17 +350,15 @@ function getDetails() {
         console.log(result)
         result?.map((item) => {
             items +=`
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-8">
-                  <div class="box-img">
-                    ${item.image}
-                  </div>
-                </div>
-               <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4">
-                   <h2>${item.name}</h2>
-               </div>
+            <div class="box-img">
+                <img src=${item.image}>
+                <h2>${item.name}</h2>
+                <div class="text-center">
+                  <button class="update-button" onclick="openSubModal(${item.id})">Update</buton>
+                </div>  
+            </div>   
             `
-
-            let info = document.querySelector(".row");
+            let info = document.querySelector(".subItems");
             info.innerHTML = items;
         })
     })
@@ -369,4 +366,132 @@ function getDetails() {
 }
 
 getDetails();
+
+// Function for creating sub-category
+function subCategory(event) {
+    event.preventDefault();
+    const getParams = new URLSearchParams(window.location.search);
+    let id = getParams.get('id');
+
+    const subToken = localStorage.getItem('loginData');
+    const theSubToken = JSON.parse(subToken);
+    const tokenSub = theSubToken.token;
+
+    const subName = document.getElementById("subCatName").value;
+    const subImage = document.getElementById("subCatImg").files[0];
+
+    if (subName === "" || subImage === "") {
+        Swal.fire({
+            icon: 'info',
+            text: 'All fields are required!',
+            confirmButtonColor: '#2D85DE'
+        })
+    }
+    else {
+        const subHeaders = new Headers();
+        subHeaders.append("Authorization", `Bearer ${tokenSub}`);
+
+        const subData = new FormData();
+        subData.append("name", subName);
+        subData.append("image", subImage);
+        subData.append("category_id", id);
+
+        const subRequest = {
+            method: 'POST',
+            headers: subHeaders,
+            body: subData
+        };
+
+        const url = "https://codesandbox.com.ng/yorubalearning/api/admin/create_subcategory";
+        fetch(url, subRequest)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+
+            if (result.status === "success") {
+                Swal.fire({
+                    icon: 'success',
+                    text: 'sub category created successfully',
+                    confirmButtonColor: '#2D85DE'
+                })
+            }
+            else {
+                Swal.fire({
+                    icon: 'info',
+                    text: 'Unsuccessful!',
+                    confirmButtonColor: '#2D85DE'
+                })
+            }
+        })
+        .catch(error => console.log('error', error));
+    }
+
+}
+
+
+let subId;
+// Fuction for opening sub Modal
+function openSubModal(theId) {
+    localStorage.setItem("subLogin", theId);
+    const subUnique = localStorage.getItem("subLogin");
+    const sub = JSON.parse(subUnique);
+    subId = sub;
+
+    const getModal = document.getElementById("my-modal");
+    getModal.style.display = "block"
+}
+
+// Function for updating subcategory
+function updateSubCategory(event) {
+    event.preventDefault();
+
+    const categorySubName = document.getElementById("updateSubName").value;
+    const categorySubImage = document.getElementById("updateSubImage").files[0];
+
+    if (categorySubName === "" || categorySubImage === "") {
+        Swal.fire({
+            icon: 'info',
+            text: 'All fields are required',
+            confirmButtonColor: '#2D85DE'
+        })
+    }
+
+    else {
+        const subCaToken = localStorage.getItem('loginData');
+        const getSubCaToken = JSON.parse(subCaToken);
+        const getTheSubToken = getSubCaToken.token;
+
+        const subCaHeaders = new Headers();
+        subCaHeaders.append("Authorization", `Bearer ${getTheSubToken}`);
+
+        const subCatData = new FormData();
+        subCatData.append("name", categorySubName);
+        subCatData.append("image", categorySubImage);
+        subCatData.append("subcategory_id", subId);
+
+        const subCatRequest ={
+            method: 'POST',
+            headers: subCaHeaders,
+            body: subCatData
+        };
+
+        const url = "https://codesandbox.com.ng/yorubalearning/api/admin/update_subcategory";
+
+        fetch(url, subCatRequest)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            if (result.status === "success") {
+                location.reload();
+            }else {
+                Swal.fire({
+                    icon: 'info',
+                    text: 'Update Unsuccessful!',
+                    confirmButtonColor: '#2D85DE'
+                })
+            }
+        })
+        .catch(error => console.log('error', error));
+    }
+}
 

@@ -420,6 +420,7 @@ table td {
     border-radius: 14.243902206420898px;
     padding: 20px 15px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 25px;
 }
 
 .search-card img {
@@ -456,10 +457,24 @@ table td {
   
 .modal-content {
     margin: 10% auto;
-    width: 60%;
+    width: 40%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modalopen;
-    animation-duration: var(--modal-duration);
+    animation-duration: 2s;
+}
+
+@media screen and (max-width: 650px) {
+    .modal-content {
+        width: 100%;
+        margin: 50% auto;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1000px) {
+    .modal-content {
+        width: 100%;
+        margin: 50% auto;
+    }
 }
   
 .modal-header h2,
@@ -503,8 +518,25 @@ table td {
     }
 }
 
-/* .box-img {
+.box-img {
     width: 100%;
-    height: 400px;
-    background: url('images/clone.jpg') no-repeat top /contain;
-} */
+}
+
+.box-img img {
+    width: 400px;
+}
+
+.subItems {
+    display: flex;
+}
+
+
+@media screen and (max-width: 850px) {
+    .subItems {
+        flex-direction: column;
+    }
+
+    .subForm {
+        width: 100%;
+    }
+}
