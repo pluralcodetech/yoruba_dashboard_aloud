@@ -495,3 +495,75 @@ function updateSubCategory(event) {
     }
 }
 
+// function for creating category list
+function createCatList() {
+    const drop = document.querySelector(".navList");
+    const listCat = localStorage.getItem('loginData');
+    const getListCat = JSON.parse(listCat);
+    const CatList = getListCat.token;
+
+    const theHeader = new Headers();
+    theHeader.append("Authorization", `Bearer ${CatList}`);
+
+    const forOptions = {
+        method: 'GET',
+        headers: theHeader
+    };
+
+    // let dropList = [];
+
+    const url = "https://codesandbox.com.ng/yorubalearning/api/admin/categorylist_dropdown";
+
+    fetch(url, forOptions)
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+        let navList = document.querySelector("#nav-list");
+        result.forEach(element => {
+            navList.innerHTML += `
+            <li>
+                <h5 class="parent">${element.parent_category.name}</h5>
+                <ul class="sub-category-${element.parent_category.id}"></ul>
+                <hr>
+            <li>
+            
+            `;
+            element.sub_category.forEach(category => {
+            document.querySelector(`.sub-category-${category.parentcategory_id}`).innerHTML += `
+                <li class="theLink">
+                <a onclick="learningMat(${category.id})">${category.name}</a>
+                </li>
+            `;
+            })
+        })
+    })
+    .catch(error => console.log('error', error));
+}
+
+createCatList();
+
+// function for creating learning materials
+function learningMat(subId) {
+    const lean = localStorage.getItem('loginData');
+    const leanMat = JSON.parse(lean);
+    const getLean = leanMat.token;
+
+
+    const leanHeaders = new Headers();
+    leanHeaders.append("Authorization", `Bearer ${getLean}`);
+
+    const leanRequest = {
+        method: 'GET',
+        headers: leanHeaders
+    };
+
+    const url = `https://codesandbox.com.ng/yorubalearning/api/admin/list_all_learning_materials?subcategory_id=`+subId+`&limit=2&skip=2
+    `;
+
+    fetch(url, leanRequest)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
+
+

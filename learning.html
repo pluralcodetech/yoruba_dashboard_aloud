@@ -45,43 +45,36 @@
                <label for="nav-toggle">
                    <span class="las la-bars"></span>
                </label>
-                Category Details
+                Learning Details
            </h2>
+           <nav class="navbar navbar-expand-lg navbar-light bg-light-color">
+            <!-- <a class="navbar-brand" href="#"><img src="assets/logo.png" alt="logo"></a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav m-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                      Categories
+                    </a>
+                    <ul class="dropdown-menu dropdown-submenu">
+                      <div id="nav-list">
+
+                      </div>
+                    </ul>
+                </li>
+              </ul>
+            </div>
+        </nav>
+        <button class="create">Create Materials</button>
         </header>
 
        <main>
-            <form class="subForm">
-                        
-                <label for="Name" class="font-mulish font-size-14 font-weight-600">Subcategory Name</label>
-                <input type="text" name="subCatName" id="subCatName" class="input mb-3" placeholder="Enter Sub-category Name">
-
-                <label for="Email" class="font-mulish font-size-14 font-weight-600">Subcategory Images</label>
-                <input type="file" name="subCatImg" id="subCatImg" class="input mb-3" placeholder="Enter Sub-category Image">
-
-                <button class="button button-blue font-weight-700" type="button" onclick="subCategory(event)">Create Category</button>
-            </form>
-           <div class="subItems"></div>
-
-           <div id="my-modal" class="mymodal">
-            <div class="modal-content">
-                <div class="modal-header">
-                 <h2>Update Category</h2>
-                    <span class="close" onclick="closeModal()">&times;</span>
-                </div>
-                <div class="modal-body">
-                 <form id="updForm">
-                 
-                     <label for="updateSubName" class="font-mulish font-size-14 font-weight-600">SubCategory Name</label>
-                     <input type="text" name="updateSubName" id="updateSubName" class="input mb-3" placeholder="Enter Categories Name Here">
- 
-                     <label for="updateSubImage" class="font-mulish font-size-14 font-weight-600">SubCategory Images</label>
-                     <input type="file" name="updateSubImage" id="updateSubImage" class="input mb-3" placeholder="Enter Categories Image Here">
-     
-                     <button class="button button-blue font-weight-700" onclick="updateSubCategory(event)">Update Category</button>
-                 </form>
-                </div>
-            </div>
-        </div>
+          <div class="container">
+            <div class="oversight"></div>
+          </div>
        </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
