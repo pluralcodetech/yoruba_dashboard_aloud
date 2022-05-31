@@ -16,7 +16,7 @@ body {
 }
 .sign-img {
     max-width: 100%;
-    height: 625px;
+    height: auto;
 }
 
 .specta {
@@ -70,7 +70,7 @@ input, input:focus {
     }
 
     .sign-img {
-        height: 205px;
+        height: 305px;
     }
 }
 
@@ -315,7 +315,7 @@ main {
     padding: 1.50rem !important;
 }
 .card-body h5 {
- font-weight: 900;
+ font-weight: bolder;
 }
 
 .card-body h6 {
@@ -415,7 +415,7 @@ table td {
     overflow-y: scroll;
 }
 
-.search-card {
+.search-card{
     width: 100%;
     border-radius: 14.243902206420898px;
     padding: 20px 15px;
@@ -518,17 +518,47 @@ table td {
     }
 }
 
-.box-img {
-    width: 100%;
+.box-img, .box-img2 {
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, 
+    rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, 
+    rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, 
+    rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    padding-bottom: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    max-width: 55%;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+}
+
+.box-img2 {
+    max-width: 100%;
+}
+
+.box-img2 img {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 650px) {
+    .box-img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.mimipara {
+    padding: 5px 15px;
+    margin: 0;
 }
 
 .box-img img {
-    width: 400px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-.subItems {
+/* .subItems {
     display: flex;
-}
+} */
 
 
 @media screen and (max-width: 850px) {
@@ -597,6 +627,7 @@ table td {
 
 .parent {
     font-weight: 700;
+    text-align: left;
 }
 
 #nav-list {
@@ -605,4 +636,216 @@ table td {
 
 hr {
     background-color: rgb(66, 99, 17);
+}
+
+.oversight {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-over {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.overboard, .overQuiz {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 650px) {
+    .overQuiz {
+        flex-direction: column;
+    }
+}
+
+.searchcard {
+    position: relative;
+    background: #fff;
+    max-width: 325px;
+    width: 325px;
+    height: 700px;
+    margin: 25px;
+    box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.searchcard-image {
+    max-height: 400px;
+}
+
+.searchcard-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.searchcard-info {
+    position: relative;
+    color: #222;
+    padding: 10px 20px 20px;
+}
+
+.searchcard-info h4 {
+    font-weight: 800px;
+    margin-bottom: 5px;
+}
+
+.searchcard-info p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.scroll-me {
+    margin: 5% auto;
+    padding: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 20px;
+}
+
+.scroll-it, .scroll-ait, .scroll-ait2 {
+    height: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.scroll-ait, .scroll-ait2 {
+    height: 200px;
+}
+
+.clent {
+    color: #2D85DE;
+    font-weight: bolder;
+}
+
+.default, .reading, .conversation {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+    padding: 10px 15px;
+    background: #2D85DE;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+    .default, .reading, .conversation {
+        padding: 12px 5px;
+        font-size: 16px;
+    }
+}
+
+.reading, .conversation {
+    border: 1px solid rgb(197, 196, 196);
+    color: #2D85DE;
+    background: #fff;
+}
+
+.cat-head {
+    font-size: 18px;
+    text-align: center;
+}
+
+.myReading, .myConversation {
+    display: none;
+}
+
+.quiz-btn {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: #2D85DE;
+    color: #fff;
+    padding: 15px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.quiz2 {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: #2D85DE;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+}
+
+.mydropdown {
+    text-align: center;
+    padding: 10px;
+}
+
+.top-three {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+    background-color: #2D85DE;
+    color: #fff;
+    padding: 20px 15px;
+    border-radius: 10px;
+}
+
+.student-card {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.swichItem {
+    float: right;
+}
+
+.tin {
+    color: #2D85DE;
+    font-weight: 900;
+}
+
+.logspan {
+    color: #fff;
+}
+
+.boxInput, .boxInput2 {
+    display: none;
+}
+
+.box-option {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.optionItem {
+    outline: none;
+    border: 0;
+    background-color: #b6cc00;
+    padding: 15px 25px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.wrapper {
+    display: none;
+}
+
+.ch-btn {
+    background: #2D85DE;
+    color: #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: none;
+    border: 0;
+    font-size: 12px;
 }

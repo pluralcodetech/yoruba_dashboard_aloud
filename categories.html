@@ -33,7 +33,13 @@
               <a href="learning.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Learning Materials</span></a>
             </li>
             <li>
-             <a href="logout.php" style="text-decoration: none;"><span class="las la-lock" style="color: #b6cc00;"></span><span>Logout</span></a>
+                <a href="quiz.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Quiz</span></a>
+            </li>
+            <li>
+                <a href="admin.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Admin Profile</span></a>
+            </li>
+            <li>
+             <a onclick="logout()" style="text-decoration: none;"><span class="las la-lock" style="color: #b6cc00;"></span><span class="logspan">Logout</span></a>
             </li>
        </ul>
     </div>
@@ -45,18 +51,18 @@
                <label for="nav-toggle">
                    <span class="las la-bars"></span>
                </label>
-                Dashboard
+               <span id="adminId"></span>
            </h2>
         </header>
 
        <main>
-        <div class="dash-cards">
+        <div class="dash-cards mb-5">
             <div class="card-single">
                 <div class="card-body">
                     <span class="las la-clipboard-list" style="color: #b6cc00; font-size: 32px;"></span>
                     <div>
                         <h6>Total Categories</h6>
-                        <h5 id="revenue"> 5</h5>
+                        <h5 id="category"></h5>
                     </div>
                 </div>
             </div>
@@ -64,17 +70,44 @@
                 <div class="card-body">
                     <span class="las la-layer-group" style="color: #b6cc00; font-size: 32px;"></span>
                     <div>
-                        <h6>Total Sub-Categories</h6>
-                        <h5 id="commission">3</h5>
+                        <h6>learning Materials</h6>
+                        <h5 id="learnmat"></h5>
                     </div>
                 </div>
             </div>
             <div class="card-single">
                 <div class="card-body">
-                    <span class="las la-file-upload" style="color: #b6cc00; font-size: 32px;"></span>
+                    <span class="las la-file-invoice" style="color: #b6cc00; font-size: 32px;"></span>
                     <div>
-                        <h6>Total Upload</h6>
-                        <h5 id="pass">2</h5>
+                        <h6>Total Subcategories</h6>
+                        <h5 id="subCat"></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dash-cards">
+            <div class="card-single">
+                <div class="card-body">
+                    <span class="las la-check-square" style="color: #b6cc00; font-size: 32px;"></span>
+                    <div>
+                        <h6>Total Quiz</h6>
+                        <h5 id="quiz"></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-single">
+                <div class="card-body">
+                    <span class="las la-user-graduate" style="color: #b6cc00; font-size: 32px;"></span>
+                    <div>
+                        <h6>Total Students</h6>
+                        <h5 id="student"></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-single">
+                <div class="card-body">
+                    <div class="text-center">
+                        <button class="top-three" onclick="studentModal(event)">Top three Students</button>
                     </div>
                 </div>
             </div>
@@ -104,26 +137,48 @@
                </div>
            </div>
 
-            <div id="my-modal" class="mymodal">
+            <div id="my-modal3" class="mymodal">
                <div class="modal-content">
                    <div class="modal-header">
                     <h2>Update Category</h2>
-                       <span class="close" onclick="closeModal()">&times;</span>
+                       <span class="close" onclick="closeModal3()">&times;</span>
                    </div>
                    <div class="modal-body">
+                       <div class="text-right">
+                          <button class="ch-btn" onclick="chooseImg()">change image</button>
+                       </div>
                     <form id="updForm">
                     
                         <label for="updateName" class="font-mulish font-size-14 font-weight-600">Category Name</label>
                         <input type="text" name="updateName" id="updateName" class="input mb-3" placeholder="Enter Categories Name Here">
-    
-                        <label for="updateImage" class="font-mulish font-size-14 font-weight-600">Category Images</label>
-                        <input type="file" name="updateImage" id="updateImage" class="input mb-3" placeholder="Enter Categories Image Here">
+
+                        <div class="getWrapp">
+                            <label for="updateName" class="font-mulish font-size-14 font-weight-600">Category Image link</label>
+                            <input type="text" name="updateName" id="updateNameImage" class="input mb-3" placeholder="Enter Categories Name Here">
+                        </div>
+
+                        <div class="wrapper">
+                            <label for="updateImage" class="font-mulish font-size-14 font-weight-600">Category Images</label>
+                            <input type="file" name="updateImage" id="updateImage" class="input mb-3" placeholder="Enter Categories Image Here">
+                        </div>
         
                         <button class="button button-blue font-weight-700" onclick="updateCategory(event)">Update Category</button>
                     </form>
                    </div>
                </div>
-           </div>
+            </div>
+
+            <div id="dash-modal" class="mymodal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                     <h2>Top three student</h2>
+                        <span class="close" onclick="closeDashModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="allstudent"></div>
+                    </div>
+                </div>
+            </div>
        </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -133,4 +188,4 @@
     <!-- Custom Javascript -->
     <script src="index.js"></script>
 </body>
-</html
+</html>

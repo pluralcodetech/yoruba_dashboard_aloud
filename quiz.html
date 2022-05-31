@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Yoruba Aloud</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <!-- Linewesome -->
+    <link rel="stylesheet" href="lineawesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dropdown-menu {
+            position: absolute;
+            will-change: transform;
+            top: 0px;
+            left: -20px;
+            transform: translate3d(25px, 56px, 0px);
+        }
+    </style>
+</head>
+<body>
+
+   <input type="checkbox" id="nav-toggle">
+    <div class="sidebar bg-dark">
+       <div class="sidebar-brand">
+       <!-- <img class="uk-margin-small-right in-offset-top-10" src="img/nan.png" alt="wave" width="95" height="50" data-uk-img> -->
+       Yoruba Aloud
+       </div>
+
+       <div class="sidebar-menu">
+       <ul>
+            <li>
+             <a href="dashboard.html" style="text-decoration: none;"><span class="lar la-chart-bar" style="color: #b6cc00;"></span><span>Dashboard</span></a>
+            </li>
+            <li>
+               <a href="categories.html" style="text-decoration: none;"><span class="las la-layer-group" style="color: #b6cc00;"></span><span>Categories</span></a>
+              </li>
+            <li>
+              <a href="learning.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Learning Materials</span></a>
+            </li>
+            <li>
+                <a href="quiz.html" class="active" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Quiz</span></a>
+            </li>
+            <li>
+                <a href="admin.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Admin Profile</span></a>
+            </li>
+            <li>
+             <a onclick="logout()" style="text-decoration: none;"><span class="las la-lock" style="color: #b6cc00;"></span><span class="logspan">Logout</span></a>
+            </li>
+       </ul>
+    </div>
+    </div>
+
+    <div class="main-content">
+       <header>
+           <h2>
+               <label for="nav-toggle">
+                   <span class="las la-bars"></span>
+               </label>
+                Quiz
+           </h2>
+           <div class="btn-group">
+                <button type="button" class="quiz-btn">Subcategories</button>
+                <button type="button" class="quiz2 dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu mydropdown">
+                    <div class="scroll-me">
+                        <div class="scroll-ait2">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="create" onclick="displayQuizModal()">Create Quiz</button>
+        </header>
+
+       <main>
+        <div class="scroll-me">
+            <div class="scroll-it">
+              <div class="scroll-obj">
+                <div class="container-over">
+                  <div class="overQuiz"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+            <div id="my-modal4" class="mymodal">
+               <div class="modal-content">
+                   <div class="modal-header">
+                    <h2>Create Quiz</h2>
+                       <span class="close" onclick="closeModal4()">&times;</span>
+                   </div>
+                   <div class="modal-body">
+                    <form id="quizForm">
+                        <input type="text" name="engquesquiz" id="engquesquiz" class="input mb-3" placeholder="Question in English">
+                        <input type="text" name="youquesquiz" id="youquesquiz" class="input mb-3" placeholder="Question in Yoruba">
+                        <input type="text" name="ansYou" id="ansYou" class="input mb-3" placeholder="Answer in Yoruba">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <input type="checkbox" onclick="showOptions()" class="myCheck">
+                            </div>
+                            <div class="col-lg-10">
+                                <p>Show options</p>
+                            </div>
+                            <div class="boxInput">
+                                <input type="text" id="firstOption" class="input mb-3" placeholder="first option">
+                                <input type="text" id="secondOption" class="input mb-3" placeholder="second option">
+                                <input type="text" id="thirdOption" class="input mb-3" placeholder="third option">
+                                <input type="text" id="fourthOption" class="input mb-3" placeholder="fourth option">
+                            </div>
+                        </div>
+                        <label for="Email" class="font-mulish font-size-14 font-weight-600">Select Quiz Image</label>
+                        <input type="file" name="quizImg" id="quizImg" class="input mb-3" placeholder="Enter Categories Here">
+        
+                        <button class="button button-blue font-weight-700" type="button" onclick="createQuizItem(event)">Create Quiz</button>
+                    </form>
+                   </div>
+               </div>
+            </div>
+
+            <div id="my-modal5" class="mymodal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                     <h2>Update Quiz</h2>
+                        <span class="close" onclick="closeModal5()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                     <form id="upForm">
+                         <input type="text" name="upengquesquiz" id="upengquesquiz" class="input mb-3" placeholder="Question in English">
+                         <input type="text" name="upyouquesquiz" id="upyouquesquiz" class="input mb-3" placeholder="Question in Yoruba">
+                         <input type="text" name="upansYou" id="upansYou" class="input mb-3" placeholder="Answer in Yoruba">
+                         <div class="row">
+                            <div class="col-lg-2">
+                                <input type="checkbox" onclick="showOptions2()" class="myCheck2">
+                            </div>
+                            <div class="col-lg-10">
+                                <p>Show options</p>
+                            </div>
+                            <div class="boxInput2">
+                                <input type="text" id="fOption" class="input mb-3" placeholder="first option">
+                                <input type="text" id="sOption" class="input mb-3" placeholder="second option">
+                                <input type="text" id="t0ption" class="input mb-3" placeholder="third option">
+                                <input type="text" id="foOption" class="input mb-3" placeholder="fourth option">
+                            </div>
+                        </div>
+     
+                         <label for="Email" class="font-mulish font-size-14 font-weight-600">Select Quiz Image</label>
+                         <input type="file" name="upquizImg" id="upquizImg" class="input mb-3" placeholder="Enter Categories Here">
+         
+                         <button class="button button-blue font-weight-700" type="button" onclick="updateMyQuiz(event)">Update Quiz</button>
+                     </form>
+                    </div>
+                </div>
+             </div>
+       </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Custom Javascript -->
+    <script src="index.js"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="lineawesome/css/line-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="getNameDetails()">
 
    <input type="checkbox" id="nav-toggle">
     <div class="sidebar bg-dark">
@@ -33,7 +33,13 @@
               <a href="learning.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Learning Materials</span></a>
             </li>
             <li>
-             <a href="logout.php" style="text-decoration: none;"><span class="las la-lock" style="color: #b6cc00;"></span><span>Logout</span></a>
+                <a href="quiz.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Quiz</span></a>
+            </li>
+            <li>
+                <a href="admin.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Admin Profile</span></a>
+            </li>
+            <li>
+             <a onclick="logout()" style="text-decoration: none;"><span class="las la-lock" style="color: #b6cc00;"></span><span class="logspan">Logout</span></a>
             </li>
        </ul>
     </div>
@@ -45,7 +51,7 @@
                <label for="nav-toggle">
                    <span class="las la-bars"></span>
                </label>
-                Category Details
+                <span class="det"></span>
            </h2>
         </header>
 
@@ -60,24 +66,28 @@
 
                 <button class="button button-blue font-weight-700" type="button" onclick="subCategory(event)">Create Category</button>
             </form>
-           <div class="subItems"></div>
+           <div class="subItems">
+               <div class="row">
+                   
+               </div>
+           </div>
 
-           <div id="my-modal" class="mymodal">
+           <div id="my-modal-mode" class="mymodal">
             <div class="modal-content">
                 <div class="modal-header">
                  <h2>Update Category</h2>
-                    <span class="close" onclick="closeModal()">&times;</span>
+                    <span class="close" onclick="closeModalMode()">&times;</span>
                 </div>
                 <div class="modal-body">
                  <form id="updForm">
                  
-                     <label for="updateSubName" class="font-mulish font-size-14 font-weight-600">SubCategory Name</label>
-                     <input type="text" name="updateSubName" id="updateSubName" class="input mb-3" placeholder="Enter Categories Name Here">
- 
-                     <label for="updateSubImage" class="font-mulish font-size-14 font-weight-600">SubCategory Images</label>
-                     <input type="file" name="updateSubImage" id="updateSubImage" class="input mb-3" placeholder="Enter Categories Image Here">
-     
-                     <button class="button button-blue font-weight-700" onclick="updateSubCategory(event)">Update Category</button>
+                    <label for="updateSubName" class="font-mulish font-size-14 font-weight-600">SubCategory Name</label>
+                    <input type="text" name="updateSubName" id="updateSubName" class="input mb-3">
+
+                    <label for="updateSubImage" class="font-mulish font-size-14 font-weight-600">SubCategory Images</label>
+                    <input type="file" name="updateSubImage" id="updateSubImage" class="input mb-3">
+    
+                    <button class="button button-blue font-weight-700" onclick="updateSubCategory(event)">Update Category</button>
                  </form>
                 </div>
             </div>

@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details | Yoruba Aloud</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Linewesome -->
     <link rel="stylesheet" href="lineawesome/css/line-awesome.min.css">
@@ -30,54 +36,190 @@
                <a href="categories.html" style="text-decoration: none;"><span class="las la-layer-group" style="color: #b6cc00;"></span><span>Categories</span></a>
               </li>
             <li>
-              <a href="learning.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Learning Materials</span></a>
+              <a href="learning.html" class="active" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Learning Materials</span></a>
             </li>
             <li>
-             <a href="logout.php" style="text-decoration: none;"><span class="las la-lock" style="color: #b6cc00;"></span><span>Logout</span></a>
+              <a href="quiz.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Quiz</span></a>
+            </li>
+            <li>
+              <a href="admin.html" style="text-decoration: none;"><span class="las la-file-upload" style="color: #b6cc00;"></span><span>Admin Profile</span></a>
+            </li>
+            <li>
+             <a onclick="logout()" style="text-decoration: none;"><span class="las la-lock" style="color: #b6cc00;"></span><span class="logspan">Logout</span></a>
             </li>
        </ul>
     </div>
     </div>
 
     <div class="main-content">
-       <header>
-           <h2>
-               <label for="nav-toggle">
-                   <span class="las la-bars"></span>
-               </label>
-                Learning Details
-           </h2>
-           <nav class="navbar navbar-expand-lg navbar-light bg-light-color">
-            <!-- <a class="navbar-brand" href="#"><img src="assets/logo.png" alt="logo"></a> -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav m-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                      Categories
-                    </a>
-                    <ul class="dropdown-menu dropdown-submenu">
-                      <div id="nav-list">
-
-                      </div>
-                    </ul>
-                </li>
-              </ul>
-            </div>
+      <header>
+        <h2>
+          <label for="nav-toggle">
+            <span class="las la-bars"></span>
+          </label>
+          Learning Details
+        </h2>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light-color">
+        <!-- <a class="navbar-brand" href="#"><img src="assets/logo.png" alt="logo"></a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav m-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu dropdown-submenu">
+                  <div class="scroll-me">
+                    <div class="scroll-ait">
+                      <div id="nav-list"></div>
+                    </div>
+                  </div>
+                </ul>
+            </li>
+          </ul>
+        </div>
         </nav>
-        <button class="create">Create Materials</button>
-        </header>
+        <button class="create" onclick="displayLearnModal()">Create Materials</button>
+      </header>
 
-       <main>
-          <div class="container">
-            <div class="oversight"></div>
+      <main>
+        <div class="scroll-me">
+          <div class="scroll-it">
+            <div class="scroll-obj">
+              <div class="container-over">
+                <div class="overboard"></div>
+              </div>
+            </div>
           </div>
-       </main>
+        </div>
+
+        <div id="my-modal" class="mymodal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="cat-head">Create Learning Categories</h3>
+                <span class="close" onclick="closeModal2()">&times;</span>
+            </div>
+            <div class="modal-body">
+              <center>
+                <button class="default" onclick="defaultLearning()">Default</button>
+                <button class="reading" onclick="reading()">Reading</button>
+                <button class="conversation" onclick="conversation()">Conversation</button>
+              </center>
+              <form class="myDefault">
+                <input type="text" name="title" id="title" class="input mb-3" placeholder="Enter title Name Here">
+                <label for="imagefile" class="font-mulish font-size-14 font-weight-600">Enter Images</label>
+                <input type="file" name="img1" id="img1" class="input mb-3" placeholder="Enter Image Here">
+                <label for="audiofile" class="font-mulish font-size-14 font-weight-600">Enter Audio file</label>
+                <input type="file" name="audio" id="audio" class="input mb-3" placeholder="Enter Audio Here">
+                <button class="button button-blue font-weight-700" onclick="createDefaultLearning(event)">Create Default</button>
+              </form>
+
+              <form class="myReading">
+                <input type="text" name="english-text" id="englishText" class="input mb-3" placeholder="Enter word in english">
+                <input type="text" name="yoruba-text" id="yorubaText" class="input mb-3" placeholder="Enter word in yoruba">
+                <label for="imagefile2" class="font-mulish font-size-14 font-weight-600">Enter Image file</label>
+                <input type="file" name="img2" id="img2" class="input mb-3" placeholder="Enter Image file Here">
+                <label for="audiofile" class="font-mulish font-size-14 font-weight-600">Enter Audio file</label>
+                <input type="file" name="audio2" id="audio2" class="input mb-3" placeholder="Enter Audio file Here">
+                <button class="button button-blue font-weight-700" onclick="createReadingMat(event)">Create Reading</button>
+              </form>
+
+              <form class="myConversation">
+                <input type="text" name="english-ques" id="englishQues" class="input mb-3" placeholder="Enter english question">
+                <input type="text" name="yoruba-ques" id="yorubaQues" class="input mb-3" placeholder="Enter yoruba question">
+                <input type="text" name="english-ans" id="englishAns" class="input mb-3" placeholder="Enter english answer">
+                <input type="text" name="yoruba-ans" id="yorubaAns" class="input mb-3" placeholder="Enter yoruba answer">
+                <label for="audiofile" class="font-mulish font-size-14 font-weight-600">Audio Question in yoruba</label>
+                <input type="file" name="audio3" id="audio3" class="input mb-3" placeholder="Enter Image file Here">
+                <label for="audiofile" class="font-mulish font-size-14 font-weight-600">Audio Answer in yoruba</label>
+                <input type="file" name="audio4" id="audio4" class="input mb-3" placeholder="Enter Image file Here">
+                <label for="imagefile3" class="font-mulish font-size-14 font-weight-600">Enter Image file</label>
+                <input type="file" name="img3" id="img3" class="input mb-3">
+                <button class="button button-blue font-weight-700" onclick="createConversation(event)">Create Conversation</button>
+              </form>
+            </div>
+          </div>
+      </div>
+
+      <div id="my-modal2" class="mymodal">
+        <div class="modal-content">
+            <div class="modal-header">
+             <h3>Update Default Learning</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form>
+                  <label for="updateTitle" class="font-mulish font-size-14 font-weight-600">Category Title</label>
+                  <input type="text" name="updateDefTitle" id="updateDefTitle" class="input mb-3">
+
+                  <label for="updateImage" class="font-mulish font-size-14 font-weight-600">Category Images</label>
+                  <input type="file" name="updateDefImage" id="updateDefImage" class="input mb-3">
+
+                  <label for="audiofile" class="font-mulish font-size-14 font-weight-600">Enter Audio</label>
+                  <input type="file" name="updateDefAudio" id="updateDefAudio" class="input mb-3">
+
+                  <button class="button button-blue font-weight-700" onclick="createUpdateDefault(event)">Update Category</button>
+                </form>
+            </div>
+        </div>
+      </div>
+
+      <div id="conver-modal" class="mymodal">
+        <div class="modal-content">
+            <div class="modal-header">
+             <h4>Update Conversation Learning</h4>
+                <span class="close" onclick="closeMyModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+              <form>
+                <input type="text" name="engques" id="engques" class="input mb-3" placeholder="Enter English Question">
+                <input type="text" name="youques" id="youques" class="input mb-3" placeholder="Enter Yoruba Question">
+                <input type="text" name="engans" id="engans" class="input mb-3" placeholder="Enter English Answer">
+                <input type="text" name="youans" id="youans" class="input mb-3" placeholder="Enter Yoruba Answer">
+
+                <label for="audiofile" class="font-mulish font-size-14 font-weight-600">Yoruba Audio Question</label>
+                <input type="file" name="youAudioQues" id="youAudioQues" class="input mb-3">
+
+                <label for="audiofile" class="font-mulish font-size-14 font-weight-600">Yoruba Audio Answer</label>
+                <input type="file" name="youAudioAns" id="youAudioAns" class="input mb-3">
+
+                <label for="updateImage" class="font-mulish font-size-14 font-weight-600">Update Images</label>
+                <input type="file" name="updateConverImage" id="updateConverImage" class="input mb-3">
+
+                <button class="button button-blue font-weight-700" onclick="createConversationUpdate(event)">Update Category</button>
+              </form>
+            </div>
+        </div>
+      </div>
+
+      <div id="reading-modal" class="mymodal">
+        <div class="modal-content">
+            <div class="modal-header">
+             <h3>Update Reading Learning</h3>
+                <span class="close" onclick="closeReadModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form>
+                  <input type="text" name="readEng" id="readEng" class="input mb-3" placeholder="Enter English word Here">
+                  <input type="text" name="readYou" id="readYou" class="input mb-3" placeholder="Enter Yoruba word Here">
+
+                  <label for="updateImage" class="font-mulish font-size-14 font-weight-600">Update Images</label>
+                  <input type="file" name="readImg" id="readImg" class="input mb-3">
+
+                  <label for="audiofile" class="font-mulish font-size-14 font-weight-600">Update Audio</label>
+                  <input type="file" name="updateReadAudio" id="updateReadAudio" class="input mb-3">
+
+                  <button class="button button-blue font-weight-700" onclick="createUpdateReading(event)">Update Category</button>
+                </form>
+            </div>
+        </div>
+      </div>
+      </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
