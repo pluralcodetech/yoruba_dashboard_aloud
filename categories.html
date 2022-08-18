@@ -107,7 +107,9 @@
             <div class="card-single">
                 <div class="card-body">
                     <div class="text-center">
-                        <button class="top-three" onclick="studentModal(event)">Top three Students</button>
+                        <button class="top-three" onclick="studentModal(event)">
+                            Top three Students
+                        </button>
                     </div>
                 </div>
             </div>
@@ -123,7 +125,12 @@
                     <label for="Email" class="font-mulish font-size-14 font-weight-600">Category Images</label>
                     <input type="file" name="image" id="imcat" class="input mb-3" placeholder="Enter Categories Here">
     
-                    <button class="button button-blue font-weight-700" type="button" onclick="createCategory(event)">Create Category</button>
+                    <button class="button button-blue font-weight-700" type="button" onclick="createCategory(event)">
+                        <div class="spinner-border spinner-border-sm text-light spin" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                        Create Category
+                    </button>
                 </form>
                </div>
                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -162,7 +169,12 @@
                             <input type="file" name="updateImage" id="updateImage" class="input mb-3" placeholder="Enter Categories Image Here">
                         </div>
         
-                        <button class="button button-blue font-weight-700" onclick="updateCategory(event)">Update Category</button>
+                        <button class="button button-blue font-weight-700" onclick="updateCategory(event)">
+                            <div class="spinner-border spinner-border-sm text-light spin" role="status">
+                                <span class="sr-only"></span>
+                            </div>
+                            Update Category
+                        </button>
                     </form>
                    </div>
                </div>

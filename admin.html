@@ -64,7 +64,12 @@
                 <label for="Email" class="font-mulish font-size-14 font-weight-600">Update Email</label>
                 <input type="email" name="updateEmail" id="updateEmail" class="input mb-3" placeholder="Enter Email Address">
 
-                <button class="button button-blue font-weight-700" type="button" onclick="upDateAdmin(event)">Update</button>
+                <button class="button button-blue font-weight-700" type="button" onclick="upDateAdmin(event)">
+                    <div class="spinner-border spinner-border-sm text-light spin" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                    Update
+                </button>
             </form>
 
             <hr>
@@ -80,7 +85,12 @@
                 <label for="Password" class="font-mulish font-size-14 font-weight-600"> confirm Password</label>
                 <input type="password" name="confirmPassword" id="confirmPassword" class="input mb-3" placeholder="Enter Password">
 
-                <button class="button button-blue font-weight-700" type="button" onclick="upDatePassword(event)">Update</button>
+                <button class="button button-blue font-weight-700" type="button" onclick="upDatePassword(event)">
+                    <div class="spinner-border spinner-border-sm text-light spin" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                    Update
+                </button>
             </form>
        </main>
     </div>

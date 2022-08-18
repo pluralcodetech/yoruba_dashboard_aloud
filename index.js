@@ -59,6 +59,7 @@ function logIn(event) {
     const getPassword = document.getElementById("password");
     const getLog = getLogEmail.value;
     const getPass = getPassword.value;
+
     if (getLog === "" || getPass === "") {
         Swal.fire({
             icon: 'info',
@@ -66,7 +67,10 @@ function logIn(event) {
             confirmButtonColor: '#2D85DE'
         });
     }
-    else {
+     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+        
 
         const formData = new FormData();
         formData.append("email", getLog);
@@ -74,8 +78,7 @@ function logIn(event) {
 
         const logOptions = {
             method: 'POST',
-            body: formData,
-            redirect: "follow"
+            body: formData
         };
         const url = "https://codesandbox.com.ng/yorubalearning/api/admin_login";
         fetch(url, logOptions)
@@ -97,7 +100,10 @@ function logIn(event) {
                 });
             }
         })
-        .catch(error => console.log('error', error));
+        .catch(error => {
+            console.log('error', error)
+            window.location.href = "index.html";
+        });
     }
 }
 
@@ -117,6 +123,9 @@ function createCategory(event) {
         });
     }
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+
         const getToken = localStorage.getItem('loginData');
         const token = JSON.parse(getToken);
         const theToken = token.token;
@@ -325,6 +334,9 @@ function updateCategory(event) {
         })
     }
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+
         const upToken = localStorage.getItem('loginData');
         const getUpToken = JSON.parse(upToken);
         const updateToken = getUpToken.token;
@@ -344,7 +356,6 @@ function updateCategory(event) {
             body: updateData
         };
 
-        console.log(getUnique);
 
         const url = "https://codesandbox.com.ng/yorubalearning/api/admin/update_category";
 
@@ -375,7 +386,7 @@ function getNameDetails() {
     let getName = params2.get('name');
     console.log(getName);
 
-    const getDelName = document.querySelector(".det");
+    const getDelName = document.querySelecftor(".det");
     getDelName.innerHTML = getName;
 }
 
@@ -796,6 +807,9 @@ function createDefaultLearning(event) {
         });
     }
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+
         const defaultlog = localStorage.getItem("loginData");
         const getDefaultLog = JSON.parse(defaultlog);
         const defaultLogItem = getDefaultLog.token;
@@ -854,6 +868,9 @@ function createReadingMat(event) {
         })
     }
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+
         const theRead = localStorage.getItem("loginData");
         const readIt = JSON.parse(theRead);
         const readToken = readIt.token;
@@ -916,6 +933,9 @@ function createConversation(event) {
         })
     }
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+
         const converItem = localStorage.getItem("loginData");
         const getConverItem = JSON.parse(converItem);
         const getConverTok = getConverItem.token;
@@ -1011,6 +1031,9 @@ function createUpdateDefault(event) {
     }
 
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+
         const updateStorage = localStorage.getItem("loginData");
         const theStorageUpdate = JSON.parse(updateStorage);
         const getTheUpStorage = theStorageUpdate.token;
@@ -1088,6 +1111,9 @@ function createConversationUpdate(event) {
         })
     }
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+
         const converUpdate = localStorage.getItem("loginData");
         const getConverUpdate = JSON.parse(converUpdate);
         const updateConver = getConverUpdate.token;
@@ -1124,7 +1150,9 @@ function createConversationUpdate(event) {
                     icon: 'info',
                     text: 'Unsuccessful',
                     confirmButtonColor: '#2D85DE'
-                })
+                });
+                spinRoll.style.display = "none";
+
             }
         })
         .catch(error => console.log('error', error));
@@ -1167,6 +1195,9 @@ function createUpdateReading(event) {
         })
     }
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+
         const getRead = localStorage.getItem("loginData");
         const getTheRead = JSON.parse(getRead);
         const readTok = getTheRead.token;
@@ -1202,7 +1233,8 @@ function createUpdateReading(event) {
                     icon: 'info',
                     text: 'Unsuccessful!',
                     confirmButtonColor: '#2D85DE'
-                })
+                });
+                spinRoll.style.display = "none";
             }
         })
         .catch(error => console.log('error', error));
@@ -1501,9 +1533,9 @@ function createQuizItem(event) {
                     confirmButtonColor: '#2D85DE'
                 })
             }
-            // setTimeout(()=> {
-            //     location.reload();
-            // }, 5000);
+            setTimeout(()=> {
+                location.reload();
+            }, 5000);
         })
         .catch(error => console.log('error', error));
     }
@@ -1543,6 +1575,7 @@ function modalQuizItem(qId) {
         const q5 = document.getElementById("sOption");
         const q6 = document.getElementById("t0ption");
         const q7 = document.getElementById("foOption");
+        const q8 = document.getElementById("upengimg");
 
         q1.setAttribute('value', `${result.question_in_english}`);
         q2.setAttribute('value', `${result.question_in_yoruba}`);
@@ -1551,6 +1584,7 @@ function modalQuizItem(qId) {
         q5.setAttribute('value', `${result.options[1]}`);
         q6.setAttribute('value', `${result.options[2]}`);
         q7.setAttribute('value', `${result.options[3]}`);
+        q8.setAttribute('value', `${result.image}`);
     })
     .catch(error => console.log('error', error));
 
@@ -1586,8 +1620,9 @@ function updateMyQuiz(event) {
     const tO = document.getElementById("t0ption").value;
     const foO = document.getElementById("foOption").value;
     const up4 = document.getElementById("upquizImg").files[0];
+    const upImg = document.getElementById("upengimg").value;
 
-    if (up1 === "" || up2 === "" || up3 === "" || up4 === "" || fO === "" || sO === "" || tO === "" || foO === "") {
+    if (up1 === "" || up2 === "" || up3 === "" || fO === "" || sO === "" || tO === "" || foO === "") {
         Swal.fire({
             icon: 'info',
             text: 'All fields are required!',
@@ -1614,6 +1649,7 @@ function updateMyQuiz(event) {
         upData.append("options[]", tO);
         upData.append("options[]", foO);
         upData.append("image", up4);
+        upData.append("image", upImg);
         upData.append("quize_id", quId);
 
         const upReq = {
@@ -1824,6 +1860,9 @@ function upDateAdmin(event) {
         });
     }
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+
         const admin1 = localStorage.getItem("loginData");
         const admin2 = JSON.parse(admin1);
         const admin3 = admin2.token;
@@ -1887,6 +1926,9 @@ function upDatePassword(event) {
     }
 
     else {
+        const spinRoll = document.querySelector(".spin");
+        spinRoll.style.display = "inline-block";
+        
         const pass1 = localStorage.getItem("loginData");
         const pass2 = JSON.parse(pass1);
         const pass3 = pass2.token;

@@ -131,10 +131,16 @@
                         <span class="close" onclick="closeModal5()">&times;</span>
                     </div>
                     <div class="modal-body">
+                        <div class="text-right">
+                            <button class="ch-btn" onclick="chooseImg()">change image</button>
+                        </div>
                      <form id="upForm">
                          <input type="text" name="upengquesquiz" id="upengquesquiz" class="input mb-3" placeholder="Question in English">
                          <input type="text" name="upyouquesquiz" id="upyouquesquiz" class="input mb-3" placeholder="Question in Yoruba">
                          <input type="text" name="upansYou" id="upansYou" class="input mb-3" placeholder="Answer in Yoruba">
+                         <div class="getWrapp">
+                           <input type="text" name="upengimg" id="upengimg" class="input mb-3" placeholder="image link">
+                         </div>
                          <div class="row">
                             <div class="col-lg-2">
                                 <input type="checkbox" onclick="showOptions2()" class="myCheck2">
@@ -149,11 +155,14 @@
                                 <input type="text" id="foOption" class="input mb-3" placeholder="fourth option">
                             </div>
                         </div>
-     
-                         <label for="Email" class="font-mulish font-size-14 font-weight-600">Select Quiz Image</label>
-                         <input type="file" name="upquizImg" id="upquizImg" class="input mb-3" placeholder="Enter Categories Here">
+
+                        <div class="wrapper">
+                            <label for="image" class="font-mulish font-size-14 font-weight-600">Select Quiz Image</label>
+                            <input type="file" name="upquizImg" id="upquizImg" class="input mb-3" placeholder="Enter Categories Here">
+                        </div>
+    
          
-                         <button class="button button-blue font-weight-700" type="button" onclick="updateMyQuiz(event)">Update Quiz</button>
+                        <button class="button button-blue font-weight-700" type="button" onclick="updateMyQuiz(event)">Update Quiz</button>
                      </form>
                     </div>
                 </div>
